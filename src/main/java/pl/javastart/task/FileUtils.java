@@ -28,8 +28,6 @@ public class FileUtils {
             while ((line = reader.readLine()) != null) {
                 parseLine(line, vehicles);
             }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new UncheckedIOException("Nie można zapisać pliku" + fileName, e);
         }
