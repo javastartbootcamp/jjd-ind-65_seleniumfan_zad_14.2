@@ -8,9 +8,9 @@ import static pl.javastart.task.FileUtils.fillVehicleQueueFromFile;
 
 public class Main {
     private Queue<Vehicle> vehicles = new LinkedList<>();
-    private static final int ZERO_NUMBER = 0;
-    private static final int FIRST_NUMBER = 1;
-    private static final int SECOND_NUMBER = 2;
+    private static final int EXIT = 0;
+    private static final int ADD_VEHICLE = 1;
+    private static final int VEHICLE_INSPECTION = 2;
     public static final String FILE_NAME = "kolejka_pojazdow.csv";
 
     public static void main(String[] args) {
@@ -27,12 +27,12 @@ public class Main {
             choose = scanner.nextInt();
             scanner.nextLine();
             switch (choose) {
-                case FIRST_NUMBER -> addVehicleToQueue(scanner);
-                case SECOND_NUMBER -> vehicleInspection();
-                case ZERO_NUMBER -> closeProgram();
+                case ADD_VEHICLE -> addVehicleToQueue(scanner);
+                case VEHICLE_INSPECTION -> vehicleInspection();
+                case EXIT -> closeProgram();
                 default -> System.out.println("Wybrałeś niewłaściwą opcję");
             }
-        } while (choose != ZERO_NUMBER);
+        } while (choose != EXIT);
     }
 
     private void closeProgram() {
@@ -48,9 +48,9 @@ public class Main {
 
     private void printMenu() {
         System.out.println("Stacja kontroli pojazdów. Wybierz jedną z opcji: ");
-        System.out.println(FIRST_NUMBER + " - dodanie pojazdu do kolejki oczekujących na przegląd");
-        System.out.println(SECOND_NUMBER + " - przegląd pojazdu");
-        System.out.println(ZERO_NUMBER + " - wyjście");
+        System.out.println(ADD_VEHICLE + " - dodanie pojazdu do kolejki oczekujących na przegląd");
+        System.out.println(VEHICLE_INSPECTION + " - przegląd pojazdu");
+        System.out.println(EXIT + " - wyjście");
     }
 
     private void addVehicleToQueue(Scanner scanner) {
